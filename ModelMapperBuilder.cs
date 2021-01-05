@@ -94,6 +94,18 @@ namespace WeAreGeekers.ModelMapper
         }
 
         /// <summary>
+        /// Return the LambdaExpression of the mapping
+        /// </summary>
+        /// <typeparam name="TInput"></typeparam>
+        /// <typeparam name="TOutput"></typeparam>
+        /// <param name="listModelMapperBuilderProperties"></param>
+        /// <returns></returns>
+        internal Expression<Func<TInput, TOutput>> GetMappingLambdaExpressionInternal<TInput, TOutput>(List<ModelMapperBuilderProperty> listModelMapperBuilderProperties)
+        {
+            return GetMappingLambdaExpression<TInput, TOutput>(listModelMapperBuilderProperties);
+        }
+
+        /// <summary>
         /// Return the Function of the mapping
         /// </summary>
         /// <typeparam name="TInput"></typeparam>
@@ -103,6 +115,18 @@ namespace WeAreGeekers.ModelMapper
         protected Func<TInput, TOutput> GetMappingFunc<TInput, TOutput>(List<ModelMapperBuilderProperty> listModelMapperBuilderProperties)
         {
             return GetMappingLambdaExpression<TInput, TOutput>(listModelMapperBuilderProperties).Compile();
+        }
+
+        /// <summary>
+        /// Return the Function of the mapping
+        /// </summary>
+        /// <typeparam name="TInput"></typeparam>
+        /// <typeparam name="TOutput"></typeparam>
+        /// <param name="listModelMapperBuilderProperties"></param>
+        /// <returns></returns>
+        internal Func<TInput, TOutput> GetMappingFuncInternal<TInput, TOutput>(List<ModelMapperBuilderProperty> listModelMapperBuilderProperties)
+        {
+            return GetMappingFunc<TInput, TOutput>(listModelMapperBuilderProperties).Compile();
         }
 
         #endregion
@@ -156,18 +180,6 @@ namespace WeAreGeekers.ModelMapper
 
             // Return object
             return this;
-        }
-
-        /// <summary>
-        /// Return the Function of the mapping
-        /// </summary>
-        /// <typeparam name="TInput"></typeparam>
-        /// <typeparam name="TOutput"></typeparam>
-        /// <param name="listModelMapperBuilderProperties"></param>
-        /// <returns></returns>
-        internal Func<TInput, TOutput> GetMappingFunc()
-        {
-            return GetMappingLambdaExpression<TInput, TOutput>(ListModelMapperBuilderProperties).Compile();
         }
 
         #endregion

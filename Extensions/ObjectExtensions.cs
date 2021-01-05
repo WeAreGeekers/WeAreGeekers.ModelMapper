@@ -19,17 +19,19 @@ namespace WeAreGeekers.ModelMapper.Extensions
         /// <returns></returns>
         public static TOutput MapTo<TInput, TOutput>(this TInput obj)
         {
+            // Find Mapper Builder
             var findMapperBuilder = ModelMapperSettings
                 .ModelMapper
                 .ListModelMapperBuilders
                 .Find(f => f.TypeTInput == obj.GetType() && f.TypeTOutput == typeof(TOutput));
 
+            // Generate exception if builder was not finded
             if (findMapperBuilder == null) throw new Exception("You can't map automatically the object type '" + obj.GetType().Name + "' to '" + typeof(TOutput).Name + "' because not exist a mapping set between the two types");
 
-            return ((ModelMapperBuilder<TInput, TOutput>)findMapperBuilder).GetMappingFunc().Invoke(obj);
+            // Return object based on mapping function
+            return findMapperBuilder.GetMappingFuncInternal<TInput, TOutput>(findMapperBuilder.ListModelMapperBuilderProperties).Invoke(obj);
         }
 
     }
-
 
 }
