@@ -126,7 +126,7 @@ namespace WeAreGeekers.ModelMapper
         /// <returns></returns>
         internal Func<TInput, TOutput> GetMappingFuncInternal<TInput, TOutput>(List<ModelMapperBuilderProperty> listModelMapperBuilderProperties)
         {
-            return GetMappingFunc<TInput, TOutput>(listModelMapperBuilderProperties).Compile();
+            return GetMappingFunc<TInput, TOutput>(listModelMapperBuilderProperties);
         }
 
         #endregion
