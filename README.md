@@ -88,11 +88,11 @@ At the end we can use the method 'MapTo<TObject>();' for mapping an object to an
 
 ## Changelog
 
-    07.01.2021 - Publish v. 0.0.1-beta1
+- 07.01.2021: Publish v. 0.0.1-beta1
     
 ## Future Features
 
-    - Custom converter through types
+- Custom converter through types
     
 
 
