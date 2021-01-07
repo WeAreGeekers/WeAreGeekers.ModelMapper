@@ -29,62 +29,59 @@ The service can be initialize with the extension method of IServiceCollection ca
 Considering that we have two class 'UserModel' and 'UserResponse' with this settings:
 
 ```csharp
-    class UserModel
-    {
-        public long Id { get; set; }
-        public string Name { get; set; }
-        public DateTime CreatedAt { get; set; }
-    }
-    
-    class UserResponse
-    {
-        public long IdUser { get; set; }
-        public string UserName { get; set; }
-    }
+class UserModel
+{
+    public long Id { get; set; }
+    public string Name { get; set; }
+    public DateTime CreatedAt { get; set; }
+}
+
+class UserResponse
+{
+    public long IdUser { get; set; }
+    public string UserName { get; set; }
+}
 ```
 
 We can set the map through properties in this way:
 
 ```csharp
-    public void ConfigureServices(IServiceCollection services)
+public void ConfigureServices(IServiceCollection services)
+{
+    // Add some services..
+    
+    services.AddModelMapper(modelMapper =>
     {
-        // Add some services..
-        
-        services.AddModelMapper(modelMapper =>
-        {
-            modelMapper
-                .Map<UserModel, UserResponse>(modelBuilder =>
-                {
-                    modelBuilder
-                        .MapProperty(um => um.Id, ur => ur.IdUser)
-                        .MapProperty(um => um.Name, ur => ur.UserName);
-                });
-                
-            // Use .Map method to set other mapping
+        modelMapper
+            .Map<UserModel, UserResponse>(modelBuilder =>
+            {
+                modelBuilder
+                    .MapProperty(um => um.Id, ur => ur.IdUser)
+                    .MapProperty(um => um.Name, ur => ur.UserName);
+            });
             
-        });
+        // Use .Map method to set other mapping
         
-        // Add other services...
+    });
+    
+    // Add other services...
 
-    }
+}
 ```
 
 At the end we can use the method 'MapTo<TObject>();' for mapping an object to another that we set in the service.
 
 ```csharp
-    
-    UserModel um = new UserModel()
-    {
-        Id = 1,
-        Name = "Geekers",
-        CreatedAt = DateTime.Now
-    };
-    
-    // Convert the 'UserModel' object into 'UserResponse' object
-    UserResponse ur = um.MapTo<UserResponse>();
+UserModel um = new UserModel()
+{
+    Id = 1,
+    Name = "Geekers",
+    CreatedAt = DateTime.Now
+};
 
+// Convert the 'UserModel' object into 'UserResponse' object
+UserResponse ur = um.MapTo<UserResponse>();
 ```
-
 
 ## Changelog
 
@@ -93,6 +90,3 @@ At the end we can use the method 'MapTo<TObject>();' for mapping an object to an
 ## Future Features
 
 - Custom converter through types
-    
-
-
