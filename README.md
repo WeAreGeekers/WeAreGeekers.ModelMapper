@@ -2,7 +2,7 @@
 
 WeAreGeekers.ModelMapper is a project that aims to facilitate the mapping between two complex objects.
 
-##### NOTE:
+#### NOTE:
 The project is still under development and testing.
 Over the weeks the project will be updated with new features and bug fixes.
 Everything will be documented in the changelog section.
