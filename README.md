@@ -5,7 +5,7 @@ WeAreGeekers.ModelMapper is a project that aims to facilitate the mapping betwee
 #### NOTE:
 
 The project is still under development and testing.  
-Over the weeks the project will be updated with new features and bug fixes.  
+Over the weeks the project will be update with new features and bug fixes.  
 Everything will be documented in the changelog section.  
 If you want to contribute to the project, you are free to do so.  
 We are thrilled that the strength of the community allows us to achieve our goal.  
@@ -85,7 +85,7 @@ UserResponse ur = um.MapTo<UserResponse>();
 
 ## Changelog
 
-- 07.01.2021: Publish v. 0.0.1-beta1
+- 07.01.2021: Published v. 0.0.1-beta1
     
 ## Future Features
 
