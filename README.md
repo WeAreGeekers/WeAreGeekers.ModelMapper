@@ -19,7 +19,7 @@ If you want to discuss the project or contact us you can do it by email at **wea
 ## Installation
 
 ```PowerShell
-PM> Install-Package PackageName
+PM> Install-Package WeAreGeekers.ModelMapper -Version 0.0.1-beta1
 ```
     
 ## Code Example
